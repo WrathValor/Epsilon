@@ -23,6 +23,7 @@ end)
 c:Button("Remove Killbricks", function()
 	local parts = game:GetService("Workspace").Map.KillBricks
 	local success, err = pcall(function()
+		print("Hi")
 		for _, v in pairs(parts:GetChildren()) do
 			local getSize = v.Size
 			local getPos = v.Position
