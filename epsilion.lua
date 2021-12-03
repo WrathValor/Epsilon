@@ -8,67 +8,65 @@ local c = w:CreateFolder("Auto")
 local player = game.Players.LocalPlayer
 local character = player.character
 
-local parts = game:GetService("Workspace").Map.KillBricks
-
 --| UI
 
 b:Toggle("Fall Damage",function(bool)
-    shared.toggle = bool
-    print(shared.toggle)
+	shared.toggle = bool
+	print(shared.toggle)
 end)
 
 b:Toggle("Auto Pickup",function(bool)
-    shared.pickup = bool
-    print(shared.pickup)
+	shared.pickup = bool
+	print(shared.pickup)
 end)
 
 c:Button("Remove Killbricks", function()
-    for _, v in pairs(parts:GetChildren()) do
-        local getSize = v.Size
-        local getPos = v.Position
-        v:Destroy()
-        
-        local newPart = Instance.new("Part")
-        newPart.Parent = workspace.Map
-        newPart.Anchored = true
-        
-        newPart.Size = getSize
-        newPart.Position = getPos
-    end
+	local parts = game:GetService("Workspace").Map.KillBricks
+	for _, v in pairs(parts:GetChildren()) do
+		local getSize = v.Size
+		local getPos = v.Position
+		v:Destroy()
+
+		local newPart = Instance.new("Part")
+		newPart.Parent = workspace.Map
+		newPart.Anchored = true
+
+		newPart.Size = getSize
+		newPart.Position = getPos
+	end
 end)
 
 c:Button("TP to CR", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4516.33, 839.294, 469.623)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4516.33, 839.294, 469.623)
 end)
 
 --| Events
 
 game:GetService("RunService"):Connect(function()
-    local fallDamage = character:FindFirstChild("fallDamage")
-    if shared.Toggle then
-        if fallDamage then
-            fallDamage.Disabled = true
-        end
-    else
-        if fallDamage then
-            fallDamage.Disabled = false
-        end
-    end
-    
-   local success, err = pcall(function()
-	if shared.pickup then
-	while shared.pickup do
-	    for i,v in pairs(game:GetService("Workspace").MouseIgnore:GetDescendants()) do
-		if v:IsA("ClickDetector") then
-		   fireclickdetector(v)
+	local fallDamage = character:FindFirstChild("fallDamage")
+	if shared.Toggle then
+		if fallDamage then
+			fallDamage.Disabled = true
 		end
-	     end
-	     wait()
+	else
+		if fallDamage then
+			fallDamage.Disabled = false
+		end
 	end
-    end
 
-    if err then
-       rconsoleprint(err)
-    end
+	local success, err = pcall(function()
+		while shared.picup do
+			wait()
+			for i,v in pairs(game:GetService("Workspace").MouseIgnore:GetDescendants()) do
+				if v:IsA("ClickDetector") then
+					fireclickdetector(v)
+				end
+			end
+		end
+
+		if err then
+			rconsoleprint(err)
+		end
+	end)
 end)
 
