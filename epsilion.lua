@@ -22,17 +22,23 @@ end)
 
 c:Button("Remove Killbricks", function()
 	local parts = game:GetService("Workspace").Map.KillBricks
-	for _, v in pairs(parts:GetChildren()) do
-		local getSize = v.Size
-		local getPos = v.Position
-		v:Destroy()
+	local success, err = pcall(function()
+		for _, v in pairs(parts:GetChildren()) do
+			local getSize = v.Size
+			local getPos = v.Position
+			v:Destroy()
 
-		local newPart = Instance.new("Part")
-		newPart.Parent = workspace.Map
-		newPart.Anchored = true
+			local newPart = Instance.new("Part")
+			newPart.Parent = workspace.Map
+			newPart.Anchored = true
 
-		newPart.Size = getSize
-		newPart.Position = getPos
+			newPart.Size = getSize
+			newPart.Position = getPos
+		end
+	end)
+	
+	if err then
+		rconsoleprint(err)
 	end
 end)
 
