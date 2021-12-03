@@ -55,7 +55,7 @@ game:GetService("RunService"):Connect(function()
         end
     end
     
-   -- if shared.pickup then
+   if shared.pickup then
         while shared.pickup do
             for i,v in pairs(game:GetService("Workspace").MouseIgnore:GetDescendants()) do
     		if v:IsA("ClickDetector") then
@@ -64,5 +64,5 @@ game:GetService("RunService"):Connect(function()
             end
 	    wait()
         end
- --   end
+    end
 end)
