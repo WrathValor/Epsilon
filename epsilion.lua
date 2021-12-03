@@ -23,7 +23,6 @@ end)
 c:Button("Remove Killbricks", function()
 	local parts = game:GetService("Workspace").Map.KillBricks
 	local success, err = pcall(function()
-		print("Hi")
 		for _, v in pairs(parts:GetChildren()) do
 			local getSize = v.Size
 			local getPos = v.Position
@@ -45,6 +44,7 @@ end)
 
 c:Button("TP to CR", function()
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4516.33, 839.294, 469.623)
+	rconsoleprint("Hi!")
 end)
 
 --| Events
