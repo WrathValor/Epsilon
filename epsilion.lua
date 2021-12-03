@@ -8,6 +8,8 @@ local c = w:CreateFolder("Auto")
 local player = game.Players.LocalPlayer
 local character = player.character
 
+local parts = game:GetService("Workspace").Map.KillBricks
+
 --| UI
 
 b:Toggle("Fall Damage",function(bool)
