@@ -56,9 +56,9 @@ game:GetService("RunService"):Connect(function()
     if shared.pickup then
         while shared.pickup do
             for i,v in pairs(game:GetService("Workspace").MouseIgnore:GetDescendants()) do
-    			if v:IsA("ClickDetector") then
-    				fireclickdetector(v)
-    			end
+    		if v:IsA("ClickDetector") then
+		   fireclickdetector(v)
+    		end
             end
 	    wait()
         end
