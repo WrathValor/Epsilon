@@ -55,14 +55,20 @@ game:GetService("RunService"):Connect(function()
         end
     end
     
-   if shared.pickup then
-        while shared.pickup do
-            for i,v in pairs(game:GetService("Workspace").MouseIgnore:GetDescendants()) do
-    		if v:IsA("ClickDetector") then
+   local success, err = pcall(function()
+	if shared.pickup then
+	while shared.pickup do
+	    for i,v in pairs(game:GetService("Workspace").MouseIgnore:GetDescendants()) do
+		if v:IsA("ClickDetector") then
 		   fireclickdetector(v)
-    		end
-            end
-	    wait()
-        end
+		end
+	     end
+	     wait()
+	end
+    end
+
+    if err then
+       rconsoleprint(err)
     end
 end)
+
